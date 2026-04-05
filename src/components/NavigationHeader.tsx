@@ -11,7 +11,7 @@ export function NavigationHeader() {
         {/* Left - Branding */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">
-            <img src={floatchatLogo} alt="FloatChat" className="w-8 h-8 animate-float" />
+            <img src={floatchatLogo.src} alt="FloatChat" className="w-8 h-8 animate-float" />
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 FloatChat

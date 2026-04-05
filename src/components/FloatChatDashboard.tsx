@@ -11,9 +11,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ChatInterface } from "@/components/ChatInterface";
 import { MapView } from "@/components/MapView";
 import { DataVisualization } from "@/components/DataVisualization";
-import { DataTableView } from "@/components/DataTableView";
+import dynamic from "next/dynamic";
 import { NavigationHeader } from "@/components/NavigationHeader";
 import { FloatChatProvider, useFloatChat } from "@/contexts/FloatChatContext";
+
+const DataTableView = dynamic(
+  () => import("@/components/DataTableView").then((m) => m.DataTableView),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="p-6 text-sm text-muted-foreground">Loading floats table...</div>
+    ),
+  }
+);
 
 function FloatChatDashboardContent() {
   const { chatMessages, addChatMessage, activeTab, setActiveTab, setChartType, unreadAnomalyCount, markAnomaliesRead, anomalies, setMapCenter, setMapZoom, setHighlightedFloat } = useFloatChat() as any;
